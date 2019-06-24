@@ -1,10 +1,12 @@
+#1. Extract protein sequence include in AntiSMASH result
+
 import os
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 import xlrd
 from Bio import Entrez
 
-Entrez.email = "jennyjenny8@hotmail.com"
+Entrez.email = "jennyjenny8@hotmail.com"    #user email
 
 def find_org_name(assembly_acc):
     handle = Entrez.esearch(db="assembly", term = assembly_acc, retmode="xml")

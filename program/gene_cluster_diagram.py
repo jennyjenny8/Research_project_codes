@@ -1,12 +1,12 @@
+#3. Draw gene cluster diagram for each group of shared gene cluster
+#==================================================================
 import csv
 import os
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio.Graphics import GenomeDiagram
 from reportlab.lib import colors
-
-#============================================================================================================
-#2. Draw gene cluster diagram for each group of shared gene cluster
+#==================================================================
 
 #open gene cluster group file
 

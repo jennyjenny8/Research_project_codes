@@ -1,3 +1,10 @@
+#4. Phylogenetic analysis of shared gene cluster
+#================================================
+
+#change the location of mafft.bat file below
+mafft_exe = "C:/Users/User/Desktop/tools/mafft-win/mafft.bat"
+
+#===========================================================
 from Bio import Phylo
 from Bio.Phylo.TreeConstruction import DistanceCalculator
 from Bio import AlignIO
@@ -95,7 +102,6 @@ for group in all_group:
     SeqIO.write(group_fasta, "./program/log/" + main_short + ".fasta", 'fasta')
 
     #align group fasta using mafft
-    mafft_exe = "C:/Users/User/Desktop/tools/mafft-win/mafft.bat"
     mafft_cline = MafftCommandline(mafft_exe, input = "./program/log/" + main_short + ".fasta")
     stdout, stderr = mafft_cline()
     aligned_file_name = "./program/log/" + main_short + "_aligned.fasta"
@@ -117,7 +123,7 @@ nexi_filename.close()
 #convert nexus into phylip
 AlignIO.convert('./program/log/COMBINED.nex', "nexus", "./program/log/COMBINED.phy", "phylip")
 
-###############################################
+#Build neighbor joining tree
 aln = AlignIO.read('./program/log/COMBINED.phy', 'phylip')
 calculator = DistanceCalculator('identity')
 dm = calculator.get_distance(aln)

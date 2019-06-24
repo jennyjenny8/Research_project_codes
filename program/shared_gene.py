@@ -1,10 +1,9 @@
+#2. Read blast result to identify shared gene cluster
 import csv
 import os
 import datetime
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation
-
-#1. read blast result to identify shared gene cluster
 
 #count pair of gene cluster in blast result
 cluster_dict = {}                               #dictionary to keep pair of gene cluster as key and number of gene match as value
@@ -125,11 +124,13 @@ for c,group in enumerate(all_group):
 	for i in group:
 		x = list(i.split('_('))[0]
 		df[c][x] = 1
-		
+
+#rearrange dataframe		
 df['SUM'] = df.count(axis='columns')
 df.sort_values("SUM", ascending = True, inplace = True)
 df.drop("SUM", axis=1, inplace = True)
 
+#plot horizontal stacked bar graph 
 ax = df.plot.barh(stacked=True,  legend = False, figsize = (10,5),
                   colormap = "nipy_spectral" )
 
